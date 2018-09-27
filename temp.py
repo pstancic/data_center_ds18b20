@@ -7,8 +7,6 @@ import time
 import smtplib
 import json
 
-# next step as of 20-09-2018: stop it from sending multiple emails after recovery.
-# 26-09-2018: Just had to make $warning go back down to 0 lol. Still not where I want it to be though as it will act like things are ok if one sensor is good but the other isn't.
 # http://www.d3noob.org/2015/02/raspberry-pi-multiple-temperature_4.html for mysql
 # https://stackoverflow.com/questions/15839124/python-pyrrd-and-rrd-with-while-loop for rrdtool
 # https://github.com/timofurrer/w1thermsensor library for working with sensor already done.
