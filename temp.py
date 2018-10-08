@@ -29,7 +29,7 @@ def check_temp(warning=[]):
         if (temp_F > 79.0 and warning[sensorNumber] < 5):
             warning[sensorNumber] += 1
             print time.strftime("%c") + ": Sensor Number " + str(sensorNumber + 1) + ": " + str(temp_F) + " " # log current temp
-            message = "Subject: [tempmonitor-ca1-01] Temperature Threshold Warning\n\nSensor number: " + str(sensorNumber + 1) + "\nCurrent temperature reading: "
+            message = "Subject: [#hostname#] Temperature Threshold Warning\n\nSensor number: " + str(sensorNumber + 1) + "\nCurrent temperature reading: "
             message += str(temp_F) + "F\nThreshold: 79.0F\nTimes seen: " + str(warning[sensorNumber]) + "\n\nTesting again in 60sec"
             sendEmail(message)
             time.sleep(60)
@@ -37,14 +37,14 @@ def check_temp(warning=[]):
         elif (temp_F > 79.0 and warning[sensorNumber] >= 5):
             warning[sensorNumber] += 1
             print time.strftime("%c") + ": Sensor Number " + str(sensorNumber + 1) + ": " + str(temp_F) + " " # log current temp
-            message = "Subject: [tempmonitor-ca1-01] Temperature Threshold Warning\n\nSensor number: " + str(sensorNumber + 1) + "\nCurrent temperature reading: "
+            message = "Subject: [#hostname#] Temperature Threshold Warning\n\nSensor number: " + str(sensorNumber + 1) + "\nCurrent temperature reading: "
             message += str(temp_F) + "F\nThreshold: 79.0F\nTimes seen: " + str(warning[sensorNumber]) + "\n\nTesting again in 5min"
             sendEmail(message)
             time.sleep(300)
             check_temp(warning)
         elif (temp_F <= 79.0 and warning[sensorNumber] >= 1):
             print time.strftime("%c") + ": Sensor Number " + str(sensorNumber + 1) + ": " + str(temp_F) + " has recovered!" # log current temp
-            message = "Subject: [tempmonitor-ca1-01] Temperature Threshold OK\n\nSensor number: " + str(sensorNumber + 1) + "\nCurrent temperature reading: "
+            message = "Subject: [#hostname#] Temperature Threshold OK\n\nSensor number: " + str(sensorNumber + 1) + "\nCurrent temperature reading: "
             message += str(temp_F) + "F\nThreshold: 79.0F\nWarnings sent prior to recovery: " + str(warning)
             sendEmail(message)
             warning[sensorNumber] = 0
